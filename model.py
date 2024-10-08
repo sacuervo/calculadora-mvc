@@ -37,15 +37,13 @@ class Model:
 
         else:
             if self.value:
-                if caption == '/' and isinstance(self.previous_value, int) and isinstance(self.value):
-                    self.operator = "//"
-                else:
-                    self.operator = caption
+                self.operator = caption
                 self.previous_value = self.value
                 self.value = ''
 
         return self.value
 
-
     def _evaluate(self):
-       return eval(self.previous_value + self.operator + self.value)
+        if self.operator == '/' and eval(self.previous_value + '%' + self.value) == 0:
+            self.operator = "//"
+        return eval(self.previous_value + self.operator + self.value)

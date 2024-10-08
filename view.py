@@ -60,10 +60,22 @@ class View(tk.Tk):
             btn = ttk.Button(
                 frm,
                 text=caption,
-                command=(lambda button=caption : self.controller.on_button_click(button)))
+                command=(lambda button=caption : self.controller.on_button_click(button))
+                , width=20
+            )
             btn.pack(side='left')
 
             buttons_in_row += 1;
 
     def _center_window(self):
-        self.geometry
+        self.update()
+
+        width = self.winfo_width()
+        height = self.winfo_height()
+
+        x_offset = (self.winfo_screenwidth() - width) // 2
+        y_offset = (self.winfo_screenheight() - height) // 2
+
+        self.geometry(
+            f'{width}x{height}+{x_offset}+{y_offset}'
+        )
