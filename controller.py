@@ -1,9 +1,3 @@
-'''
-Created on: 10/7/2024
-
-@author: sacuervo
-'''
-
 from model import Model
 from view import View
 
